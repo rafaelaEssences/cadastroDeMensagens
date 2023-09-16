@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>--Formulário Contato--</title>
+    <meta charset="utf-8" />
+    <!--<link href="style.css" rel="stylesheet" media="all" /> -->
+    <script src="JavaScript1.js"></script>
+    <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css" />
+</head>
+<!--style="background-color: red";-->
+
+<body>
+    <div class="container">
+        <div class="container-fluid">
+            <form name="meu_form">
+
+                <h1>Cadastro de mensagens de consultas</h1>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="nome">Nome</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="nomeid" placeholder="Digite o nome do cliente" required="required"
+                            name="nome" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="fone">Fone</label>
+                    </div>
+                    <div class="col">
+                        <input type="tel" id="foneid" placeholder="+xx(xx)xx-xx-xx-xx" name="fone" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="col"> <input type="email" id="emailid" placeholder="fulano@mail.com" name="email" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+
+                        <INPUT TYPE="RADIO" NAME="rdVaga" VALUE="vaga" class="esquerda"> Vaga
+                        <INPUT TYPE="RADIO" NAME="rdRemarcacao" VALUE="remarcacao" class="esquerda"> Remarcação
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <textarea placeholder="Deixe sua opnião" id="textoDaMensagem"></textarea>
+                    </div>
+                </div>
+
+               
+
+
+
+                <input type="submit" class="enviar" onclick="Enviar();" value="Enviar" />
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
