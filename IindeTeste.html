@@ -2,74 +2,91 @@
 <html>
 
 <head>
-    <title>--Formulário Contato--</title>
-    <meta charset="utf-8" />
-    <!--<link href="style.css" rel="stylesheet" media="all" /> -->
-    <script src="js/javascript.js"></script>
-    
+  <title>--Formulário Contato--</title>
+  <meta charset="utf-8" />
+  <!--<link href="style.css" rel="stylesheet" media="all" /> -->
+  <script src="js/javascript.js"></script>
 
-    <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css" />
 </head>
 <!--style="background-color: red";-->
 
 <body>
-    <div class="container">
-        <div class="container-fluid">
-            <form name="meu_form">
+  <div class="container">
+    <div class="container-fluid">
+      <form name="meu_form" class="form-group">
 
-                <h1>Cadastro de mensagens de consultas</h1>
-
-                <div class="row justify-content-md-center"">
-                    <div class=" col">
-                    <label for="nome">Nome c </label>
-                </div>
-                <div class="col">
-                    <input type="text" id="nomeid" placeholder="Digite o nome do cliente" required="required"
-                        name="nome" />
-                </div>
-        </div>
+        <h1>Cadastro de mensagens de consultas</h1>
 
         <div class="row">
-            <div class="col">
-                <label for="fone">Fone:</label>
-            </div>
-            <div class="col">
-                <input type="tel" id="foneid" placeholder="+xx(xx)xx-xx-xx-xx" name="fone" />
-            </div>
+          <div class="col">
+            <label for="nome">Nome </label>
+          </div>
+          <div class="col">
+          <input type=" text" id="nomeid" placeholder="Digite o nome do cliente" required="required" name="nome"
+            class="form-control" />
         </div>
-
-        <div class="row">
-            <div class="col">
-                <label for="email">Email:</label>
-            </div>
-            <div class="col"> <input type="email" id="emailid" placeholder="fulano@mail.com" name="email" />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-
-                <INPUT TYPE="RADIO" NAME="rdmensagens" VALUE="vaga" class="esquerda" id="todosOsRadios" onclick="EscolhaOpcao()"> Vaga
-                <INPUT TYPE="RADIO" NAME="rdmensagens" VALUE="remarcacao" class="esquerda" id="todosOsRadios" onclick="EscolhaOpcao()"> Remarcação
-                <INPUT TYPE="RADIO" NAME="rdmensagens" VALUE="avisos" class="esquerda" id="todosOsRadios"  onclick="EscolhaOpcao()"> Avisos
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">Texto:</div>
-            <div class="col">
-                <textarea placeholder="Deixe sua opnião" id="textoDaMensagem"></textarea>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <input type="submit" class="enviar" onclick="Enviar();" value="Enviar" />
-            </div>
-        </div>
-
-        </form>
     </div>
+    
+
+    <div class="row">
+      <div class="col">
+        <label for="fone">Fone:</label>
+      </div>
+      <div class="col">
+        <input type="tel" id="foneid" placeholder="+xx(xx)xx-xx-xx-xx" name="fone" class="form-control" />
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="email">Email:</label>
+      </div>
+      <div class="col"> <input type="email" id="emailid" placeholder="fulano@mail.com" name="email"
+          class="form-control" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+
+        <div class="form-check form-check-inline">
+          <INPUT TYPE="RADIO" NAME="rdmensagens" VALUE="vaga" class="form-check-input esquerda" id="todosOsRadios"
+            onclick="EscolhaOpcao()">
+          <label class="form-check-label" for="inlineRadio1">Vaga</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <INPUT TYPE="RADIO" NAME="rdmensagens" VALUE="remarcacao" class="form-check-input esquerda" id="todosOsRadios"
+            onclick="EscolhaOpcao()">
+          <label class="form-check-label" for="inlineRadio1">Remarcação</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <INPUT TYPE="RADIO" NAME="rdmensagens" VALUE="avisos" class="form-check-input esquerda" id="todosOsRadios"
+            onclick="EscolhaOpcao()">
+          <label class="form-check-label" for="inlineRadio1">Avisos</label>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">Texto:</div>
+      <div class="col">
+        <textarea placeholder="Deixe sua opnião" id="textoDaMensagem" maxlength="4000" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <input type="submit" onclick="Enviar();" value="Enviar" class="btn btn-primary" />
+      </div>
+    </div>
+
+    </form>
+  </div>
+  </div>
 </body>
 
 </html>

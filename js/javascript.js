@@ -1,21 +1,27 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    var rad = document.querySelectorAll('input[type=radio]');
-    console.log(rad);
-    
+    //var rad = document.querySelectorAll('input[type=radio]');
+    //console.log(rad);
+
 });
 
 function EscolhaOpcao() {
-    //var radio = document.querySelector('input[name=rdmensagens]:checked').value;
 
-    var rad = document.querySelectorAll('input[type=radio]');
+    var radios = document.getElementsByName("rdmensagens");
 
-    for (var i = 0; i<= rad.length; i++)
-    {
-
+    for (var i = 0; i < radios.length; i++) {
+        
+        if (radios[i].checked) {
+            
+            console.log(radios[i].value);
+            
+            break;
+        }
     }
-    //console.log('oiiii')
+}
 
+function CriadorDeMensagem(tipoDeMensagem)
+{
 
 }
