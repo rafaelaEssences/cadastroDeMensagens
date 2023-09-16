@@ -1,14 +1,15 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    //var rad = document.querySelectorAll('input[type=radio]');
-    //console.log(rad);
+
+ 
 
 });
 
 function EscolhaOpcao() {
 
     var radios = document.getElementsByName("rdmensagens");
+    var nome = document.getElementById("inputNome").textContent;
 
     for (var i = 0; i < radios.length; i++) {
         
