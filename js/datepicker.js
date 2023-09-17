@@ -16,6 +16,7 @@ function formatar() {
     var date = data.getDate();
     var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
     var year = data.getFullYear();
+    
 
     //console.log(data);
 
