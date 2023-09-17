@@ -21,5 +21,8 @@ function formatar() {
 
     // $('#lblDataExtenso').html(`${day}, ${date} de ${month} de ${year}`);
 
-    $('#lblDataExtensoTexto').html(`${date} de ${month}`);
+    //$('#lblDataExtensoTexto').html(`${date} de ${month}`);
+
+    $('#lblDataExtensoTexto').html(`${day}, ${date} de ${month}`);
+    
 }

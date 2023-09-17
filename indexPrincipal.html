@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Cadastro de Mensagens</title>
   <meta charset="utf-8" />
@@ -13,8 +12,6 @@
   <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css" />
-
-
 
 </head>
 
@@ -61,7 +58,7 @@
           <label for="lblHora">Escolha as horas:</label>
         </div>
         <div class="col-2">
-          <select class="form-control">
+          <select class="form-control" id="selectHoras">
             <!-- <option selected="">Please Select</option> -->
             <option value="9">9h</option>
             <option value="10">10h</option>
@@ -129,7 +126,7 @@
         <div class="form-group row">
           <label for="lblNome" class="col-sm-2 col-form-label">Texto:</label>
           <div class="col-sm-10">
-            <textarea placeholder="Deixe sua opnião" id="textoDaMensagem" maxlength="4000"
+            <textarea placeholder="Deixe sua opnião" id="textoDaMensagem" maxlength="4000" rows="20"
               class="form-control"></textarea>
           </div>
 
@@ -149,49 +146,5 @@
 
 <script src="js/datepicker.js"></script>
 <script>
-  function CriadorDeMensagem() {
-
-    //console.log('entrou')
-
-    var radios = document.getElementsByName("rdmensagens");
-    var nome = document.getElementById("inputNome").textContent;
-    var opcao = null;
-    var texto = null;
-
-    for (var i = 0; i < radios.length; i++) {
-
-      if (radios[i].checked) {
-
-       
-        opcao = radios[i].value;
-        break;
-      }
-    }
-    if (opcao == "vaga") {
-      //console.log("opção escolhida foi vaga");
-      texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeVaga();
-    }
-    else if (opcao == "remarcacao") {
-      console.log("opção escolhida foi remarcacao");
-    }
-    else {
-      console.log("opção escolhida foi avisos");
-    }
-
-    return texto;
-  }
-
-
-  function CriacaoDaMensagemDeVaga() {
-
-    var texto = null;
-    var nome =  document.querySelector('input[id="inputNome"]').value;
-    var dataPorExtenso =  document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
-
-    console.log("dataPorExtenso = ", dataPorExtenso);
-
-    texto = "*Olá, " + nome + ", você foi marcado(a) para o dia " + dataPorExtenso + ", terça, às 11h (horário de Brasília - Brasil)*!";
-    return texto;
-
-  }
+  
 </script>
