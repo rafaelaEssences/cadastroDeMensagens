@@ -1,9 +1,12 @@
 $(function () {
-    $('#datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
-    $('#btnFormatar').click(formatar);
-  });
 
-  function formatar() {
+    //var $j = jQuery.noConflict();
+    //$j("#datepicker").datepicker();
+    $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+    $('#btnFormatar').click(formatar);
+});
+
+function formatar() {
     var data = $('#datepicker').datepicker('getDate');
     var extenso;
 
@@ -18,5 +21,5 @@ $(function () {
 
     // $('#lblDataExtenso').html(`${day}, ${date} de ${month} de ${year}`);
 
-    $('#lblDataExtenso').html(`${date} de ${month}`);
-  }
+    $('#lblDataExtensoTextp').html(`${date} de ${month}`);
+}
