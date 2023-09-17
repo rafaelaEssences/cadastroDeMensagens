@@ -47,8 +47,6 @@ function TrocaDeOpcao(){
 
 function CriadorDeMensagem() {
 
-    //console.log('entrou')
-
     var radios = document.getElementsByName("rdmensagens");
     var nome = document.getElementById("inputNome").textContent;
     var opcao = null;
@@ -64,12 +62,10 @@ function CriadorDeMensagem() {
       }
     }
     if (opcao == "vaga") {
-      //console.log("opção escolhida foi vaga");
 
       texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeVaga();
     }
     else if (opcao == "remarcacao") {
-      //console.log("opção escolhida foi remarcacao");
     }
     else {
        
@@ -89,12 +85,17 @@ function CriadorDeMensagem() {
     var getHora = document.getElementById("selectHoras");
     var hora = getHora.options[getHora.selectedIndex].text;
 
+    var getMinutos = document.getElementById("selectMinutos");
+    var minutos = getMinutos.options[getMinutos.selectedIndex].text;
+
     var dataPorExtenso = document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
     var diaDaSemana =  dataPorExtenso.split(',')[0];
     var data =  dataPorExtenso.split(',')[1];
 
+    //texto = TextoDeVagas(diaDaSemana, hora, minutos, data);
 
-    texto = "*Olá, " + nome + ", você foi marcado(a) para o dia" + data + ", " + diaDaSemana + ", às " + hora + " (horário de Brasília - Brasil)*!";
+
+    texto = "*Olá, " + nome + ", você foi marcado(a) para o dia" + data + ", " + diaDaSemana + ", às " + hora +  minutos +  " (horário de Brasília - Brasil)*!";
     texto += "\n\n";
     texto += "❗️ *Eu sempre confirmo poucos dias antes a consulta pelo whatsapp, por favor, é necessário que fique atento(a)!*"
     texto += "\n\n";
@@ -120,15 +121,24 @@ function CriadorDeMensagem() {
     var getHora = document.getElementById("selectHoras");
     var hora = getHora.options[getHora.selectedIndex].text;
 
+    var getMinutos = document.getElementById("selectMinutos");
+    var minutos = getMinutos.options[getMinutos.selectedIndex].text;
+
     var dataPorExtenso = document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
     var diaDaSemana =  dataPorExtenso.split(',')[0];
     var data =  dataPorExtenso.split(',')[1];
 
-    console.log("opção escolhida foi avisos2");
+    texto = TextoDeAvisos(diaDaSemana, hora, minutos,data, nome);
+ 
+    return texto;
+  }
 
+  function TextoDeAvisos(diaDaSemana, hora, minutos, data){
+
+    var texto = null;
     texto = "Olá!";
     texto += "\n";
-    texto += "*Dia " + data +" ("+ diaDaSemana  + ", às " +  hora  +" - horário de Brasília - Brasil) surgiu uma vaga para consulta.*";
+    texto += "*Dia " + data +" ("+ diaDaSemana  + ", às " + hora +  minutos +" - horário de Brasília - Brasil) surgiu uma vaga para consulta.*";
     texto += "\n\n";
     texto += "❗️ Você gostaria de adiantar o atendimento?";
 
@@ -143,9 +153,43 @@ function CriadorDeMensagem() {
     texto += "❗️ *OBS: por favor, caso você não queira, poderia me informar?*";
     texto += "\n\n";
     texto += "Obrigada!";
-   
+
     return texto;
+
   }
+
+  function TextoDeVagas(diaDaSemana, hora, minutos, data, nome){
+
+    var texto = null;
+    texto = "*Olá, " + nome + ", você foi marcado(a) para o dia" + data + ", " + diaDaSemana + ", às " + hora +  minutos +  " (horário de Brasília - Brasil)*!";
+    texto += "\n\n";
+    texto += "❗️ *Eu sempre confirmo poucos dias antes a consulta pelo whatsapp, por favor, é necessário que fique atento(a)!*"
+    texto += "\n\n";
+    texto += "☀️ Poderia me confirmar abaixo a forma de pagamento?";
+    texto += "\n";
+    texto += "1) Pix (pagamento somente no dia).";
+    texto += "\n";
+    texto += "2) Transferência bancária (no máximo 3 dias úteis antes da consulta).";
+    texto += "\n";
+    texto += "3) Paypal (só pra quem está fora do Brasil -  2 dias úteis antes da consulta).";
+    texto += "\n\n";
+    texto+= "❗️ *Obs: Conforme for 'vagando' eu vou te passando pra frente, ok? Habilite as notificações e fique em alerta!*"
+    texto += "\n\n";
+    texto += "Obrigada!";
+    return texto;
+
+  }
+
+
+
+
+
+
+
+
+
+
+
 
   function Limpar(){
 
