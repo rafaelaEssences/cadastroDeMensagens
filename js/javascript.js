@@ -30,6 +30,10 @@ function CriadorDeMensagem()
     // console.log("Botão Clicado!")
 }
 
+function Teste(event){
+    event.preventDefault()
+}
+
 function ComboHoras(){
 
 }
