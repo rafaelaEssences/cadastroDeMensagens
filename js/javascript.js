@@ -4,38 +4,59 @@ document.addEventListener("DOMContentLoaded", function () {
  
 });
 
+function CriadorDeMensagem() {
 
-
-
-function EscolhaOpcao() {
+    console.log('entrou')
 
     var radios = document.getElementsByName("rdmensagens");
     var nome = document.getElementById("inputNome").textContent;
+    var opcao = null;
+    var texto = null;
 
     for (var i = 0; i < radios.length; i++) {
-        
-        if (radios[i].checked) {
-            
-            console.log(radios[i].value);
-            
-            break;
-        }
+
+      if (radios[i].checked) {
+
+        console.log(radios[i].value);
+        opcao = radios[i].value;
+        break;
+      }
     }
+    if (opcao == "vaga") {
+      console.log("opção escolhida foi vaga");
+      //texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeVaga();
+    }
+    else if (opcao == "remarcacao") {
+      console.log("opção escolhida foi remarcacao");
+    }
+    else {
+      console.log("opção escolhida foi avisos");
+    }
+
+    return texto;
+  }
+
+
+function CriacaoDaMensagemDeVaga(){
+
+    var texto = null;
+    var nome = documentt.getElementById("inputNome").textContent;
+    var dataPorExtenso = documentt.getElementById("lblDataExtensoTexto").textContent;
+
+    texto = "*Olá,"+ nome +", você foi marcado(a) para o dia" +  dataPorExtenso, + "terça, às 11h (horário de Brasília - Brasil)*!";
+    return texto;
+
+}
+
+function TrocaDeOpcao(){
+
 }
 
 function CriadorDeMensagem()
 {
-    console.log("Botão Clicado!")
+
     // event.preventDefault()
     // console.log("Botão Clicado!")
-}
-
-function Teste(event){
-    event.preventDefault()
-}
-
-function ComboHoras(){
-
 }
 
 function buildTimePicker() {

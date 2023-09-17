@@ -4,16 +4,17 @@
 <head>
   <title>Cadastro de Mensagens</title>
   <meta charset="utf-8" />
-
+  <script src="js/javascript.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
   <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css" />
 
-  <script src="js/javascript.js"></script>
+
 
 </head>
 
@@ -45,7 +46,7 @@
 
         <div class="col-6">
           <label id="lblDataPorExtenso">Data por extenso:</label>
-          <label id="lblDataExtensoTextp"></label>
+          <label id="lblDataExtensoTexto"></label>
         </div>
 
       </div>
@@ -57,33 +58,33 @@
 
       <div class="form-group row">
         <div class="col-2">
-          <label for="lblHora" >Escolha as horas:</label>       
+          <label for="lblHora">Escolha as horas:</label>
         </div>
         <div class="col-2">
           <select class="form-control">
             <!-- <option selected="">Please Select</option> -->
             <option value="9">9h</option>
-            <option value="10">10h</option>  
-            <option value="11">11h</option>   
-            <option value="12">12h</option> 
-            <option value="13">13h</option>     
+            <option value="10">10h</option>
+            <option value="11">11h</option>
+            <option value="12">12h</option>
+            <option value="13">13h</option>
           </select>
         </div>
-        <div class="col-2"> 
+        <div class="col-2">
           <label for="lblHora">Escolha os minutos:</label>
         </div>
         <div class="col-2">
           <select class="form-control">
             <!-- <option selected="">Please Select</option> -->
             <option value="0">Zero minutos</option>
-            <option value="15">15</option> 
-            <option value="30">30</option>  
-            <option value="45">45</option>     
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
           </select>
         </div>
 
       </div>
-  
+
       <!-- FIM HORAS -->
 
 
@@ -102,18 +103,21 @@
             <legend class="col-form-label col-sm-2 pt-0">Opções de Mensagens</legend>
             <div class="col-sm-10">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios1" value="vaga" checked>
+                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios1" value="vaga" checked
+                  onclick="TrocaDeOpcao()" id="rdVaga">
                 <label class="form-check-label" for="gridRadios1">
                   Vaga
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios2" value="remarcacao">
+                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios2" value="remarcacao"
+                  onclick="TrocaDeOpcao()" id="rdRemarcacao">
                 <label class="form-check-label" for="gridRadios2">
                   Remarcação
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios3" value="avisos">
+                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios3" value="avisos"
+                  onclick="TrocaDeOpcao()" id="rdAvisos">
                 <label class="form-check-label" for="gridRadios3">
                   Avisos
                 </label>
@@ -128,15 +132,16 @@
             <textarea placeholder="Deixe sua opnião" id="textoDaMensagem" maxlength="4000"
               class="form-control"></textarea>
           </div>
-        </div>
 
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <button type="button" class="btn btn-primary" onclick="CriadorDeMensagem()">Criar Mensagem</button>
-          </div>
-        </div>
       </form>
     </div>
+
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="button" class="btn btn-primary" onclick="CriadorDeMensagem()">Criar Mensagem</button>
+      </div>
+    </div>
+  </div>
   </div>
 </body>
 
@@ -144,6 +149,49 @@
 
 <script src="js/datepicker.js"></script>
 <script>
+  function CriadorDeMensagem() {
+
+    //console.log('entrou')
+
+    var radios = document.getElementsByName("rdmensagens");
+    var nome = document.getElementById("inputNome").textContent;
+    var opcao = null;
+    var texto = null;
+
+    for (var i = 0; i < radios.length; i++) {
+
+      if (radios[i].checked) {
+
+       
+        opcao = radios[i].value;
+        break;
+      }
+    }
+    if (opcao == "vaga") {
+      //console.log("opção escolhida foi vaga");
+      texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeVaga();
+    }
+    else if (opcao == "remarcacao") {
+      console.log("opção escolhida foi remarcacao");
+    }
+    else {
+      console.log("opção escolhida foi avisos");
+    }
+
+    return texto;
+  }
 
 
+  function CriacaoDaMensagemDeVaga() {
+
+    var texto = null;
+    var nome =  document.querySelector('input[id="inputNome"]').value;
+    var dataPorExtenso =  document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
+
+    console.log("dataPorExtenso = ", dataPorExtenso);
+
+    texto = "*Olá, " + nome + ", você foi marcado(a) para o dia " + dataPorExtenso + ", terça, às 11h (horário de Brasília - Brasil)*!";
+    return texto;
+
+  }
 </script>
