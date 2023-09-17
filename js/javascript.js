@@ -1,10 +1,13 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-
+   
  
 
 });
+
+
+
 
 function EscolhaOpcao() {
 
