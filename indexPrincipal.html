@@ -13,17 +13,22 @@
   <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
 
 </head>
 
 <body>
   <div class="container">
     <div class="container-fluid">
+      <div class="clearfix"></div>
       <div class="row">
         <div class="col">
           <h1>Gerador de Mensagens</h1>
         </div>
       </div>
+      <div class="clearfix"></div>
+      <div class="clearfix"></div>
 
       <!-- DATA -->
 
@@ -33,16 +38,16 @@
         </div>
 
         <div class="col-2">
-          <input type="text" class="form-control" id="datepicker">
+          <input type="text" class="form-control" id="datepicker" placeholder="Escolha uma data">
         </div>
 
         <div class="col-2">
-          <button id="btnFormatar" class="btn btn-info">Formatar</button>
+          <button id="btnFormatar" class="btn btn-info" onclick="FormatarData()" ">Formatar</button>
         </div>
 
         <div class="col-6">
           <label id="lblDataPorExtenso">Data por extenso:</label>
-          <label id="lblDataExtensoTexto"></label>
+          <strong><label id="lblDataExtensoTexto"></label></strong>
         </div>
 
       </div>
@@ -121,7 +126,7 @@
           </div>
         </fieldset>
 
-        <!-- CHECKBOXES-->
+        <!-- CHECKBOXES-------------------------------------------------------------------------------->
 
         <fieldset class="form-group" id="fieldAvisos">
 
@@ -136,7 +141,7 @@
           <div class="row">
             <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="chckContinueAdiantando">
+                <input class="form-check-input" type="checkbox" value="" id="chckContinueAdiantandoAvisos">
                 <label class="form-check-label" for="flexCheckDefault">
                   Continuar adiantamento
                 </label>
@@ -145,7 +150,52 @@
           </div>
 
         </fieldset>
-        <!-- CHECKBOXES-->
+
+
+        <fieldset class="form-group" id="fieldRemarcacao">
+
+          <div class="row">
+            <div class="col">
+              <label class="form-check-label" for="flexCheckDefault">
+                <h3>Texto para Remarcação</h3>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="chckContinueAdiantandoRemarcacao">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Continuar adiantando
+                </label>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="chckPagamentoRemarcacao">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pagamento
+                </label>                
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="chckConfirmacaoDiasAntes">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Confirmar dias antes
+                </label>                
+              </div>
+            </div>
+
+          </div>
+
+        </fieldset>
+
+
+         <!-- fim CHECKBOXES-------------------------------------------------------------------------------->
 
         <div class="form-group row">
           <div class="col-2">
@@ -155,15 +205,37 @@
             <textarea placeholder="" id="textoDaMensagem" maxlength="4000" rows="15" class="form-control"></textarea>
           </div>
           <div class="col-2">
-            <button type="button" class="btn btn-primary" onclick="CriadorDeMensagem()">Criar Mensagem</button>
+            <button type="button" class="btn btn-primary" onclick="GerarTexto()">Criar Mensagem</button>
           </div>
         </div>
-
-
+        </div>
+        <div class="row">
+          <div class="col"></div>
+        </div>
 
       </form>
     </div>
   </div>
+
+  <!-- MODAL -------------------------------------------------------------------------------->
+
+  <div class="modal fade" id="modal-mensagem">
+    <div class="modal-dialog">
+         <div class="modal-content">
+             <!-- <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                 <h4 class="modal-title">Título da mensagem</h4>
+             </div> -->
+             <div class="modal-body">
+                 <p>É necessário preencher a data</p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+             </div>
+         </div>
+     </div>
+ </div>
+
 </body>
 
 </html>

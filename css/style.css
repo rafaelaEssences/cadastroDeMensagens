@@ -1,11 +1,15 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: #e1eff0;
+}
+
+.container{
+    background-color: white;
 }
 
 
-
-.container {
+/* .container {
     width: 100vw;
     height: 100vh;
     background: #6C7A89;
@@ -13,10 +17,10 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    }
+    } */
 
 
-
+/* 
  form {
     font-family: Verdana,Tahoma,sans-serif;
     font-size: 15px;
@@ -33,7 +37,7 @@ h1 {
 
 /*input{
     float: left;
-}*/
+}
 
 #esquerda{
     float: left;
@@ -81,4 +85,4 @@ form label {
     margin-left: 20px;
     color: #FFFFFF;
     font-weight: bold;
-}
+} */
