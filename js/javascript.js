@@ -4,10 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("fieldAvisos").style.display = 'none';
   document.getElementById("fieldRemarcacao").style.display = 'none';
   //document.getElementById('datepicker').style.border = "none";
-
-  // document.getElementById('datepicker').addEventListener('change', function(){alert('test');});
-
 });
+
+
+function CamposDeletados(){
+
+
+  //document.getElementById('datepicker').value= '';
+  document.getElementById('textoDaMensagem').value = '';
+  //document.getElementById('inputNome').value = '';
+ // document.getElementById('lblDataExtensoTexto').textContent = '';
+
+}
+
 
 
 function TrocaDeOpcao() {
@@ -28,16 +37,24 @@ function TrocaDeOpcao() {
     }
   }
   if (opcao == "vaga") {
-
+  
     document.getElementById("fieldAvisos").style.display = 'none';
     document.getElementById("fieldRemarcacao").style.display = 'none';
     texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeVaga();
   }
   else if (opcao == "remarcacao") {
+
     document.getElementById("fieldAvisos").style.display = 'none';
     document.getElementById("fieldRemarcacao").style.display = 'block';
+
+  }
+  else if (opcao == "remarcacaoEmCimaDaHora") {
+
+    document.getElementById("fieldAvisos").style.display = 'none';
+    document.getElementById("fieldRemarcacao").style.display = 'none';
   }
   else {
+
     document.getElementById("fieldAvisos").style.display = 'block';
     document.getElementById("fieldRemarcacao").style.display = 'none';
     texto = document.getElementById("textoDaMensagem").textContent = CriacaoDeMensagemDeAviso();
@@ -50,8 +67,9 @@ function TrocaDeOpcao() {
 
 function GerarTexto() {
 
-  if (document.getElementById('datepicker').value == '') {
+ 
 
+  if (document.getElementById('datepicker').value == '') {
     //document.getElementById('datepicker').style.border = "2px solid red";
     $("#modal-mensagem").modal();
   }
@@ -70,18 +88,28 @@ function GerarTexto() {
       }
     }
     if (opcao == "vaga") {
+      document.getElementById("fieldAvisos").style.display = 'none';
+      document.getElementById("fieldRemarcacao").style.display = 'none';
 
       texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeVaga();
     }
     else if (opcao == "remarcacao") {
       document.getElementById("fieldAvisos").style.display = 'none';
       document.getElementById("fieldRemarcacao").style.display = 'block';
+
       texto = document.getElementById("textoDaMensagem").textContent = CriacaoDeMensagemDeRemarcacao();
+    }
+    else if (opcao == "remarcacaoEmCimaDaHora") {
+      document.getElementById("fieldAvisos").style.display = 'none';
+      document.getElementById("fieldRemarcacao").style.display = 'none';
+
+      texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeRemarcacaoEmCimaDaHora();
     }
     else {
 
       document.getElementById("fieldAvisos").style.display = 'block';
       document.getElementById("fieldRemarcacao").style.display = 'none';
+
       texto = document.getElementById("textoDaMensagem").textContent = CriacaoDeMensagemDeAviso();
     }
 
@@ -100,7 +128,8 @@ function CriacaoDeMensagemDeAviso() {
   var getMinutos = document.getElementById("selectMinutos");
   var minutos = getMinutos.options[getMinutos.selectedIndex].text;
 
-  var dataPorExtenso = document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
+  // var dataPorExtenso = document.querySelector('span[id="lblDataExtensoTexto"]').textContent;
+  var dataPorExtenso = document.getElementById('lblDataExtensoTexto').textContent;
   var diaDaSemana = dataPorExtenso.split(',')[0];
   var data = dataPorExtenso.split(',')[1];
 
@@ -121,7 +150,8 @@ function CriacaoDeMensagemDeRemarcacao() {
   var getMinutos = document.getElementById("selectMinutos");
   var minutos = getMinutos.options[getMinutos.selectedIndex].text;
 
-  var dataPorExtenso = document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
+  //var dataPorExtenso = document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
+  var dataPorExtenso = document.getElementById('lblDataExtensoTexto').textContent;
   var diaDaSemana = dataPorExtenso.split(',')[0];
   var data = dataPorExtenso.split(',')[1];
 
@@ -153,6 +183,29 @@ function CriacaoDeMensagemDeRemarcacao() {
 
 }
 
+function CriacaoDaMensagemDeRemarcacaoEmCimaDaHora() {
+
+  var texto = null;
+  var nome = document.querySelector('input[id="inputNome"]').value;
+
+  var getHora = document.getElementById("selectHoras");
+  var hora = getHora.options[getHora.selectedIndex].text;
+
+  var getMinutos = document.getElementById("selectMinutos");
+  var minutos = getMinutos.options[getMinutos.selectedIndex].text;
+
+  texto = "*Olá, " + nome +"!*";
+  texto += "\n\n";
+  texto +=  "*A pessoa que seria consultada daqui a pouco às " + hora + minutos + " ainda não entrou em contato*, então há a POSSIBILIDADE de vaga.";
+  texto += "\n\n";
+  texto += "(Eu sempre dou um prazo de 5 até 10 minutos após o horário marcado pra pessoa aparecer).";
+  texto += "\n\n";
+  texto += "❗️ *Se realmente a pessoa desistir* você gostaria de ser atendido(a)?";
+  texto += "\n\n";
+  texto += "Obrigada!";
+  return texto;
+}
+
 
 function CriacaoDaMensagemDeVaga() {
 
@@ -165,7 +218,8 @@ function CriacaoDaMensagemDeVaga() {
   var getMinutos = document.getElementById("selectMinutos");
   var minutos = getMinutos.options[getMinutos.selectedIndex].text;
 
-  var dataPorExtenso = document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
+  //var dataPorExtenso = document.querySelector('label[id="lblDataExtensoTexto"]').textContent;
+  var dataPorExtenso = document.getElementById('lblDataExtensoTexto').textContent;
   var diaDaSemana = dataPorExtenso.split(',')[0];
   var data = dataPorExtenso.split(',')[1];
 
@@ -236,18 +290,6 @@ function TextoDeAvisos(diaDaSemana, hora, minutos, data) {
 
 }
 
-
-
-
-
-
-function FormatarData() {
-
-  // if (document.getElementById('datepicker').value == '') {
-  //   document.getElementById('datepicker').style.border = "none";
-  // }
-}
-
 function TrocarData(){
     if (document.getElementById('datepicker').value == '') {
     document.getElementById('datepicker').style.border = "none";
@@ -257,29 +299,7 @@ function TrocarData(){
   }
 }
 
-// document.getElementById("datepicker").addEventListener("change", function(){
-//   if (document.getElementById('datepicker').value == '') {
-//     document.getElementById('datepicker').style.border = "none";
-//   }
-//   else{
-//     document.getElementById('datepicker').style.border = "2px solid red";
-//   }
-// })
-  
 
-
-
-
-
-
-
-
-
-
-
-function Limpar() {
-
-}
 
 /* input dinamico */
 

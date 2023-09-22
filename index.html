@@ -5,11 +5,18 @@
   <title>Cadastro de Mensagens</title>
   <meta charset="utf-8" />
   <script src="js/javascript.js"></script>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" /> -->
+  <link rel="stylesheet" href="css/jquery-ui.css" />
 
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> -->
+  <script src="js/popper.min.js"></script>
+
+  <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+  <script src="js/jquery-1.9.1.js"></script>
+
+  <!-- <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script> -->
+  <script src="js/jquery-ui.js"></script>
+
   <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css" />
@@ -34,7 +41,7 @@
 
       <div class="form-group row">
         <div class="col-2">
-          <label for="lblData" class="col-form-label">Data:</label>
+          <span class="col-form-label">Data:</span>
         </div>
 
         <div class="col-2">
@@ -42,12 +49,12 @@
         </div>
 
         <div class="col-2">
-          <button id="btnFormatar" class="btn btn-info" onclick="FormatarData()" ">Formatar</button>
+          <button id="btnFormatar" class="btn btn-info" >Formatar</button>
         </div>
 
         <div class="col-6">
-          <label id="lblDataPorExtenso">Data por extenso:</label>
-          <strong><label id="lblDataExtensoTexto"></label></strong>
+          <span id="lblDataPorExtenso">Data por extenso:</span>
+          <strong><span id="lblDataExtensoTexto"></span></strong>
         </div>
 
       </div>
@@ -58,7 +65,7 @@
 
       <div class="form-group row">
         <div class="col-2">
-          <label for="lblHora">Escolha as horas:</label>
+          <span for="lblHora">Escolha as horas:</span>
         </div>
         <div class="col-2">
           <select class="form-control" id="selectHoras">
@@ -71,7 +78,7 @@
           </select>
         </div>
         <div class="col-2">
-          <label for="lblHora">Escolha os minutos:</label>
+          <span>Escolha os minutos:</span>
         </div>
         <div class="col-2">
           <select class="form-control" id="selectMinutos">
@@ -90,7 +97,7 @@
       <form>
 
         <div class="form-group row">
-          <label for="lblNome" class="col-sm-2 col-form-label">Nome:</label>
+          <span for="lblNome" class="col-sm-2 col-form-label">Nome:</span>
           <div class="col-sm-10">
             <input type="nome" class="form-control" id="inputNome" placeholder="Nome">
           </div>
@@ -104,22 +111,31 @@
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios1" value="vaga" checked
                   onclick="TrocaDeOpcao()" id="rdVaga">
-                <label class="form-check-label" for="gridRadios1">
-                  Vaga
+                <span class="form-check-label">
+                  Vaga</span>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios2" value="remarcacao"
                   onclick="TrocaDeOpcao()" id="rdRemarcacao">
-                <label class="form-check-label" for="gridRadios2">
+                <span class="form-check-label">
                   Remarcação
-                </label>
+                </span>
               </div>
+
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios3" value="avisos"
+                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios3" value="remarcacaoEmCimaDaHora"
+                  onclick="TrocaDeOpcao()" id="rdRemarcacaoEmCimaDaHora">
+                <span class="form-check-label">
+                  Remarcação em cima da hora
+                </span>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios4" value="avisos"
                   onclick="TrocaDeOpcao()" id="rdAvisos">
-                <label class="form-check-label" for="gridRadios3">
+                <span class="form-check-label" >
                   Avisos
-                </label>
+                </span>
               </div>
 
             </div>
@@ -132,9 +148,9 @@
 
           <div class="row">
             <div class="col">
-              <label class="form-check-label" for="flexCheckDefault">
+              <span class="form-check-label">
                 <h3>Texto para Avisos</h3>
-              </label>
+              </span>
             </div>
           </div>
 
@@ -142,23 +158,22 @@
             <div class="col">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="chckContinueAdiantandoAvisos">
-                <label class="form-check-label" for="flexCheckDefault">
+                <span class="form-check-label" >
                   Continuar adiantamento
-                </label>
+                </span>
               </div>
             </div>
           </div>
 
         </fieldset>
 
-
         <fieldset class="form-group" id="fieldRemarcacao">
 
           <div class="row">
             <div class="col">
-              <label class="form-check-label" for="flexCheckDefault">
+              <span class="form-check-label">
                 <h3>Texto para Remarcação</h3>
-              </label>
+              </span>
             </div>
           </div>
 
@@ -166,32 +181,31 @@
             <div class="col-3">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="chckContinueAdiantandoRemarcacao">
-                <label class="form-check-label" for="flexCheckDefault">
+                <span class="form-check-label">
                   Continuar adiantando
-                </label>
+                </span>
               </div>
             </div>
 
             <div class="col-3">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="chckPagamentoRemarcacao">
-                <label class="form-check-label" for="flexCheckDefault">
+                <span class="form-check-label" >
                   Pagamento
-                </label>                
+                </span>                
               </div>
             </div>
 
             <div class="col-3">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="chckConfirmacaoDiasAntes">
-                <label class="form-check-label" for="flexCheckDefault">
+                <span class="form-check-label">
                   Confirmar dias antes
-                </label>                
+                </span>                
               </div>
             </div>
 
           </div>
-
         </fieldset>
 
 
@@ -199,13 +213,14 @@
 
         <div class="form-group row">
           <div class="col-2">
-            <label for="lblNome" class="col-form-label">Texto:</label>
+            <span  class="col-form-label">Texto:</label>
           </div>
-          <div class="col-10">
-            <textarea placeholder="" id="textoDaMensagem" maxlength="4000" rows="15" class="form-control"></textarea>
+          <div class="col-8">
+            <textarea placeholder="" id="textoDaMensagem" maxlength="4000" rows="16" class="form-control"></textarea>
           </div>
           <div class="col-2">
-            <button type="button" class="btn btn-primary" onclick="GerarTexto()">Criar Mensagem</button>
+            <button type="button" class="btn btn-primary" onclick="GerarTexto()" id="btnCriarMensagem">Criar Mensagem</button>
+            <!-- <button type="button" class="btn btn-success" onclick="GerarTexto()" id="btnLimparCampos">Limpar Campos</button> -->
           </div>
         </div>
         </div>
