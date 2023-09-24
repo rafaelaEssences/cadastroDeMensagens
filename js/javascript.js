@@ -7,17 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function CamposDeletados(){
-
-
-  //document.getElementById('datepicker').value= '';
-  document.getElementById('textoDaMensagem').value = '';
-  //document.getElementById('inputNome').value = '';
- // document.getElementById('lblDataExtensoTexto').textContent = '';
-
-}
-
-
 
 function TrocaDeOpcao() {
 
@@ -27,6 +16,7 @@ function TrocaDeOpcao() {
   var nome = document.getElementById("inputNome").textContent;
   var opcao = null;
   var texto = null;
+  document.getElementById('lblDataExtensoTexto').textContent = '';
 
   for (var i = 0; i < radios.length; i++) {
 
@@ -51,7 +41,22 @@ function TrocaDeOpcao() {
   else if (opcao == "remarcacaoEmCimaDaHora") {
 
     document.getElementById("fieldAvisos").style.display = 'none';
+    document.getElementById("fieldRemarcacao").style.display = 'none'; 
+    texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeRemarcacaoEmCimaDaHora();
+  }
+  else if(opcao == "avisoProvavelVagaPorDesistencia"){
+
+    document.getElementById("fieldAvisos").style.display = 'none';
     document.getElementById("fieldRemarcacao").style.display = 'none';
+    texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeAvisoDeProvavelVagaPorDesistencia();
+
+  }
+  else if(opcao == "avisoPrazoConfirmacaoConsulta"){
+
+    document.getElementById("fieldAvisos").style.display = 'none';
+    document.getElementById("fieldRemarcacao").style.display = 'none';
+    texto = document.getElementById("textoDaMensagem").textContent = CriacaoDeMensagemDeAvisoPrazoConfirmacaoConsulta();
+
   }
   else {
 
@@ -66,8 +71,6 @@ function TrocaDeOpcao() {
 
 
 function GerarTexto() {
-
- 
 
   if (document.getElementById('datepicker').value == '') {
     //document.getElementById('datepicker').style.border = "2px solid red";
@@ -105,8 +108,24 @@ function GerarTexto() {
 
       texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeRemarcacaoEmCimaDaHora();
     }
-    else {
 
+    else if(opcao == "avisoProvavelVagaPorDesistencia"){
+
+      document.getElementById("fieldAvisos").style.display = 'none';
+      document.getElementById("fieldRemarcacao").style.display = 'none';
+      texto = document.getElementById("textoDaMensagem").textContent = CriacaoDaMensagemDeAvisoDeProvavelVagaPorDesistencia();
+  
+    }
+
+    else if(opcao == "avisoPrazoConfirmacaoConsulta"){
+
+      document.getElementById("fieldAvisos").style.display = 'none';
+      document.getElementById("fieldRemarcacao").style.display = 'none';
+      texto = document.getElementById("textoDaMensagem").textContent = CriacaoDeMensagemDeAvisoPrazoConfirmacaoConsulta();
+  
+    }
+    
+    else {
       document.getElementById("fieldAvisos").style.display = 'block';
       document.getElementById("fieldRemarcacao").style.display = 'none';
 
@@ -115,6 +134,76 @@ function GerarTexto() {
 
     return texto;
   }
+}
+
+function CriacaoDeMensagemDeAvisoPrazoConfirmacaoConsulta(){
+
+  var texto = null;
+  var nome = document.querySelector('input[id="inputNome"]').value;
+
+  var getHora = document.getElementById("selectHoras");
+  var hora = getHora.options[getHora.selectedIndex].text;
+
+  var getMinutos = document.getElementById("selectMinutos");
+  var minutos = getMinutos.options[getMinutos.selectedIndex].text;
+
+  var dataPorExtenso = document.getElementById('lblDataExtensoTexto').textContent;
+  var diaDaSemana = dataPorExtenso.split(',')[0];
+  var data = dataPorExtenso.split(',')[1];
+
+   var getHoraPrazo = document.getElementById("selectHorasPrazo");
+   var horaPRazo = getHoraPrazo.options[getHoraPrazo.selectedIndex].text;
+
+   var getMinutosPrazo = document.getElementById("selectMinutosPrazo");
+   var minutosPrazo = getMinutosPrazo.options[getMinutosPrazo.selectedIndex].text;
+
+  var dataPorExtensoPrazo = document.getElementById('lblDataExtensoTextoDataPrazo').textContent;
+  var diaDaSemanaPrazo = dataPorExtensoPrazo.split(',')[0];
+  var dataPrazo = dataPorExtensoPrazo.split(',')[1];
+
+  var getHojeOuAmanha = document.getElementById("selectDiasSemana");
+  var hojeOuAmanha = getHojeOuAmanha.options[getHojeOuAmanha.selectedIndex].text;
+
+  texto = "Olá, " + nome +"!";
+  texto += "\n\n";
+  texto += "Vou ter dar o *prazo até o dia de " + hojeOuAmanha + ", " + dataPrazo + ", " + diaDaSemanaPrazo + ", às " + horaPRazo + minutosPrazo + 
+  "*, pra confirmar a *consulta do dia de" + data + ", " + diaDaSemana + ", às " + hora + minutos + "*.";
+  texto += "\n\n";
+  texto += "❗️ *Caso não responda eu colocarei outra pessoa no seu lugar, ok?*";
+  texto += "\n\n";
+  texto += "Espero que comprrenda.";
+  texto += "\n\n";
+  texto += "Obrigada!";
+
+  return texto;
+
+}
+
+function CriacaoDaMensagemDeAvisoDeProvavelVagaPorDesistencia(){
+
+  var texto = null;
+  var nome = document.querySelector('input[id="inputNome"]').value;
+
+  var getHora = document.getElementById("selectHoras");
+  var hora = getHora.options[getHora.selectedIndex].text;
+
+  var getMinutos = document.getElementById("selectMinutos");
+  var minutos = getMinutos.options[getMinutos.selectedIndex].text;
+
+  var dataPorExtenso = document.getElementById('lblDataExtensoTexto').textContent;
+  var diaDaSemana = dataPorExtenso.split(',')[0];
+  var data = dataPorExtenso.split(',')[1];
+
+  texto = "Olá, " + nome +"!";
+  texto += "\n\n";
+  texto += "*Há uma grande possibilidade do dia" + data + ", " + diaDaSemana + ", às " + hora + minutos + " (horário de Brasília - Brasil) a pessoa que estava marcada desistir da consulta*.";
+  texto += "\n\n";
+  texto += "❗️ *Se realmente se confirmar você gostaria de ser atendido(a)?*";
+  texto += "\n\n";
+  texto += "Aguardo retorno, obrigada!";
+
+  return texto;
+
 }
 
 function CriacaoDeMensagemDeAviso() {
@@ -298,34 +387,3 @@ function TrocarData(){
     document.getElementById('datepicker').style.border = "2px solid red";
   }
 }
-
-
-
-/* input dinamico */
-
-//   function buildTimePicker() {
-//     var result = document.createElement('span');
-//     var hours = document.createElement('select');
-//     hours.setAttribute('id', 'hour');
-//     for (var h=1; h<13; h++) {
-//         var option = document.createElement('option');
-//         option.setAttribute('value', h);
-//         option.appendChild(document.createTextNode(h + 'h'));
-//         hours.appendChild(option);
-//     }
-//     var minutes = document.createElement('select');
-//     minutes.setAttribute('id', 'minute');
-//     for (var m=0; m<60; m++) {
-//         var option = document.createElement('option');
-//         option.setAttribute('value', m);
-//         option.appendChild(document.createTextNode(m + 'm'));
-//         minutes.appendChild(option);
-//     }
-//     result.appendChild(hours);
-//     result.appendChild(document.createTextNode(" : "));
-//     result.appendChild(minutes);
-
-//     return result;
-// }
-
-// document.body.appendChild(buildTimePicker());

@@ -59,17 +59,37 @@
 
       </div>
 
+
+      <div class="form-group row">
+        <div class="col-2">
+          <span class="col-form-label">Data para prazo:</span>
+        </div>
+
+        <div class="col-2">
+          <input type="text" class="form-control" id="datepicker_data_consulta" placeholder="Escolha uma data">
+        </div>
+
+        <div class="col-2">
+          <button id="btnFormatar_data_consulta" class="btn btn-info" >Formatar</button>
+        </div>
+
+        <div class="col-6">
+          <span id="lblDataPorExtensoDataPrazo">Data por extenso:</span>
+          <strong><span id="lblDataExtensoTextoDataPrazo"></span></strong>
+        </div>
+
+      </div>
+
       <!-- FIM DATA -->
 
       <!-- HORAS -->
 
       <div class="form-group row">
-        <div class="col-2">
+        <div class="col-3">
           <span for="lblHora">Escolha as horas:</span>
         </div>
         <div class="col-2">
           <select class="form-control" id="selectHoras">
-            <!-- <option selected="">Please Select</option> -->
             <option value="9">9h</option>
             <option value="10">10h</option>
             <option value="11">11h</option>
@@ -82,14 +102,54 @@
         </div>
         <div class="col-2">
           <select class="form-control" id="selectMinutos">
-            <!-- <option selected="">Please Select</option> -->
             <option value="0"></option>
             <option value="15">15</option>
             <option value="30">30</option>
             <option value="45">45</option>
           </select>
         </div>
+      </div>
 
+      <div class="form-group row">
+        <div class="col-3">
+          <span for="lblHoraPrazo">Escolha as horas para prazo:</span>
+        </div>
+        <div class="col-2">
+          <select class="form-control" id="selectHorasPrazo">
+            <option value="9">9h</option>
+            <option value="10">10h</option>
+            <option value="11">11h</option>
+            <option value="12">12h</option>
+            <option value="13">13h</option>
+            <option value="14">14h</option>
+            <option value="15">15h</option>
+            <option value="16">16h</option>
+            <option value="17">17h</option>
+            <option value="18">18h</option>
+            <option value="19">19h</option>
+            <option value="20">20h</option>
+            <option value="21">21h</option>
+            <option value="22">22h</option>
+            <option value="23">23h</option>
+          </select>
+        </div>
+        <div class="col-2">
+          <span>Escolha os minutos:</span>
+        </div>
+        <div class="col-2">
+          <select class="form-control" id="selectMinutosPrazo">
+            <option value="0"></option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+          </select>
+        </div>
+        <div class="col-2">
+          <select class="form-control" id="selectDiasSemana">
+            <option value="hoje">HOJE</option>
+            <option value="amanha">AMANHÃ</option>
+          </select>
+        </div>
       </div>
 
       <!-- FIM HORAS -->
@@ -134,7 +194,23 @@
                 <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios4" value="avisos"
                   onclick="TrocaDeOpcao()" id="rdAvisos">
                 <span class="form-check-label" >
-                  Avisos
+                  Aviso para surgimento de vaga
+                </span>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios5" value="avisoProvavelVagaPorDesistencia"
+                  onclick="TrocaDeOpcao()" id="rdAvisoProvavelVagaPorDesistencia">
+                <span class="form-check-label" >
+                  Aviso para adiantamento por provável desistência por falta de contato
+                </span>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="rdmensagens" id="gridRadios6" value="avisoPrazoConfirmacaoConsulta"
+                  onclick="TrocaDeOpcao()" id="rdAvisoPrazoConfirmacaoConsulta">
+                <span class="form-check-label" >
+                  Aviso de prazo para confirmação da consulta
                 </span>
               </div>
 
